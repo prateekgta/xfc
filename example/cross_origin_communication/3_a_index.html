@@ -91,11 +91,12 @@
         "xfc.authorized": () => {
           console.log("xfc.authorized");
           // how do we send this message to a frame 
-          this.trigger('pong', {a:1});
+         
         },
       };
       XFC.Consumer.init(lifecycleEvents);
       var frame = XFC.Consumer.mount(document.body, 'http://localprovider.com:8080/example/cross_origin_communication/3_a_provider.html', { 'iframeAttrs': {'allow': 'camera'}});
+      frame.trigger('pong', {a:1});
       var btn = document.getElementById('btn-unmount');
       btn.addEventListener('click', function() {
         frame.unmount();
